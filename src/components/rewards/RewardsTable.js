@@ -1,11 +1,11 @@
 import {useEffect, useMemo, useState} from "react";
 import {getTransactions} from "../../services/CustomerService";
-import Reward from "./reward/Reward";
+import RewardsRow from "./reward/RewardsRow";
 import {transformTransactions} from "../../utils/RewardsUtil";
-import classes from './Rewards.module.css';
+import classes from './RewardsTable.module.css';
 import {ERR_MESSAGE} from "../../helper/Constants";
 
-const Rewards = () => {
+const RewardsTable = () => {
   const [customers, setCustomers] = useState([]);
   const [months, setMonths] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,14 +41,14 @@ const Rewards = () => {
     return customers.map(customer => {
       const [firstMonth, secondMonth, thirdMonth] = [customer[months[0]], customer[months[1]], customer[months[2]]];
 
-      return (<Reward key={customer.customerId}
-                      customerName={customer.customerName}
-                      firstMonth={firstMonth}
-                      secondMonth={secondMonth}
-                      thirdMonth={thirdMonth}
-                      total={customer.total}/>);
+      return (<RewardsRow key={customer.customerId}
+                          customerName={customer.customerName}
+                          firstMonth={firstMonth}
+                          secondMonth={secondMonth}
+                          thirdMonth={thirdMonth}
+                          total={customer.total}/>);
     });
-  }, [customers, months])
+  }, [customers, months]);
 
   if (loading) return <p>Loading...</p>;
   if (hasError) return <p>{ERR_MESSAGE}</p>;
@@ -73,8 +73,7 @@ const Rewards = () => {
       {transformedCustomers}
       </tbody>
     </table>
-
   );
 };
 
-export default Rewards;
+export default RewardsTable;

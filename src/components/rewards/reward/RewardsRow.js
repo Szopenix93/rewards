@@ -1,4 +1,4 @@
-const Reward = ({customerName, firstMonth, secondMonth, thirdMonth, total}) => {
+const RewardsRow = ({customerName, firstMonth, secondMonth, thirdMonth, total}) => {
   return (
     <tr>
       <td>{customerName}</td>
@@ -10,4 +10,4 @@ const Reward = ({customerName, firstMonth, secondMonth, thirdMonth, total}) => {
   );
 };
 
-export default Reward;
+export default RewardsRow;

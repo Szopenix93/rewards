@@ -23,9 +23,7 @@ function calculateAmountForEachMonth(transactions, monthsSet, customerNamesMap) 
     if (!monthsSet.has(month)) {
       monthsSet.add(month);
     }
-
-    let points = 0;
-    points = calculatePoints(amount, points);
+    const points = calculatePoints(amount);
 
     if (!customersMap.has(customerId)) {
       customerNamesMap.set(customerId, customerName);
@@ -45,7 +43,9 @@ function calculateAmountForEachMonth(transactions, monthsSet, customerNamesMap) 
   }, new Map());
 }
 
-function calculatePoints(amount, points) {
+function calculatePoints(amount) {
+  let points = 0;
+
   if (amount >= 100) {
     points = 50 + 2 * (amount - 100);
   } else if (amount >= 50) {

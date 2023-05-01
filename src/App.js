@@ -1,11 +1,11 @@
 import Header from "./components/header/Header";
-import Rewards from "./components/rewards/Rewards";
+import RewardsTable from "./components/rewards/RewardsTable";
 
 function App() {
   return (
     <>
       <Header/>
-      <Rewards/>
+      <RewardsTable/>
     </>
   );
 }
