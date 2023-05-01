@@ -1,0 +1,51 @@
+[
+  {
+    "customerId": "06661e22-70c1-4e96-9631-51dc6ed7a122",
+    "customerName": "Jack Sparrow",
+    "transactionId": "b230e450-9de1-4d8f-9126-9c6644bd03b1",
+    "amount": 30,
+    "date": "2023-02-01T15:34:55Z"
+  }, {
+    "customerId": "06661e22-70c1-4e96-9631-51dc6ed7a122",
+    "customerName": "Jack Sparrow",
+    "transactionId": "dd5a110e-800b-4fd2-bb75-34aa1fba45f5",
+    "amount": 75,
+    "date": "2023-02-03T15:38:53Z"
+  }, {
+    "customerId": "06661e22-70c1-4e96-9631-51dc6ed7a122",
+    "customerName": "Jack Sparrow",
+    "transactionId": "2c648395-98ed-41d3-b365-e736ec4df405",
+    "amount": 140,
+    "date": "2023-03-14T12:32:53Z"
+  }, {
+    "customerId": "06661e22-70c1-4e96-9631-51dc6ed7a122",
+    "customerName": "Jack Sparrow",
+    "transactionId": "eaca63ac-3e79-4536-8253-8be67cd0afd1",
+    "amount": 250,
+    "date": "2023-04-21T11:13:21Z"
+  }, {
+    "customerId": "4fccff9d-9088-43bd-89f0-fb6eb604726c",
+    "customerName": "Harry Potter",
+    "transactionId": "40863bab-8006-46b1-89c3-a619ec29cb79",
+    "amount": 455,
+    "date": "2023-02-13T15:33:57Z"
+  }, {
+    "customerId": "4fccff9d-9088-43bd-89f0-fb6eb604726c",
+    "customerName": "Harry Potter",
+    "transactionId": "e57c2d10-d5e8-48d5-a2d5-88dd761feb1d",
+    "amount": 850,
+    "date": "2023-02-23T11:13:11Z"
+  }, {
+    "customerId": "4fccff9d-9088-43bd-89f0-fb6eb604726c",
+    "customerName": "Harry Potter",
+    "transactionId": "7ff5dd37-ffdb-4dbe-a60b-ad82743217c0",
+    "amount": 79,
+    "date": "2023-03-01T16:13:11Z"
+  }, {
+    "customerId": "4fccff9d-9088-43bd-89f0-fb6eb604726c",
+    "customerName": "Harry Potter",
+    "transactionId": "c5f79ef2-2041-4be6-b2d5-954a4ce3b375",
+    "amount": 419,
+    "date": "2023-04-18T19:07:00Z"
+  }
+]
