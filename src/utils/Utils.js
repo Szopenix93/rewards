@@ -1,7 +1,5 @@
-import {MONTH_NAMES} from "../helper/Constants";
+import { Months } from "../enums/Months";
 
 export function sortArrayByMonthName(arr) {
-  arr.sort(function(a, b){
-    return MONTH_NAMES.indexOf(a) - MONTH_NAMES.indexOf(b);
-  });
+  arr.sort((a, b) => Months[a] - Months[b]);
 }

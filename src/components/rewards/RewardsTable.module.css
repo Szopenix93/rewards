@@ -3,10 +3,12 @@
   margin-right: auto;
 }
 
-.col-name {
+th.col-name {
   width: 10rem;
+  height: 2rem;
 }
 
-.col-month {
+th.col-month {
   width: 6rem;
+  height: 2rem;
 }

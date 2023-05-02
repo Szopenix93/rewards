@@ -1,35 +1,29 @@
-import {useEffect, useMemo, useState} from "react";
-import {getTransactions} from "../../services/CustomerService";
+import { useEffect, useMemo, useState } from "react";
+import { getTransactions } from "../../services/CustomerService";
 import RewardsRow from "./reward/RewardsRow";
-import {transformTransactions} from "../../utils/RewardsUtil";
+import { transformTransactions } from "../../utils/RewardsUtil";
 import classes from './RewardsTable.module.css';
-import {ERR_MESSAGE} from "../../helper/Constants";
+import { Spinner } from "../ui/Spinner";
 
 const RewardsTable = () => {
   const [customers, setCustomers] = useState([]);
   const [months, setMonths] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     async function fetchTransactions() {
-      if (!ignore) {
-        try {
-          const transactions = await getTransactions();
-          const {customersArr, monthsArr} = transformTransactions(transactions);
+      const transactions = await getTransactions();
 
-          setMonths(monthsArr);
-          setCustomers(customersArr);
-        } catch (e) {
-          setHasError(true);
-        } finally {
-          setLoading(false);
-        }
+      if (!ignore) {
+        const { customersArr, monthsArr } = transformTransactions(transactions);
+        setMonths(monthsArr);
+        setCustomers(customersArr);
+        setLoading(false);
       }
     }
 
     let ignore = false;
-    fetchTransactions();
+    void fetchTransactions();
 
     return () => {
       ignore = true;
@@ -50,27 +44,19 @@ const RewardsTable = () => {
     });
   }, [customers, months]);
 
-  if (loading) return <p>Loading...</p>;
-  if (hasError) return <p>{ERR_MESSAGE}</p>;
+  if (loading) return <Spinner/>;
 
   return (
     <table className={classes.center}>
-      <colgroup>
-        <col className={classes['col-name']}/>
-        <col className={classes['col-month']}/>
-        <col className={classes['col-month']}/>
-        <col className={classes['col-month']}/>
-        <col className={classes['col-month']}/>
-      </colgroup>
       <thead>
         <tr>
-          <th>Customer</th>
-          {months.map(month => <th key={month}>{month}</th>)}
-          <th>Total</th>
+          <th className={classes['col-name']}>Customer</th>
+          {months.map(month => <th className={classes['col-month']} key={month}>{month}</th>)}
+          <th className={classes['col-month']}>Total</th>
         </tr>
       </thead>
       <tbody>
-      {transformedCustomers}
+        {transformedCustomers}
       </tbody>
     </table>
   );

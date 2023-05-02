@@ -1,4 +1,5 @@
-import {sortArrayByMonthName} from "./Utils";
+import { sortArrayByMonthName } from "./Utils";
+import { Months } from "../enums/Months";
 
 export function transformTransactions(transactions) {
   const monthsSet = new Set();
@@ -12,14 +13,15 @@ export function transformTransactions(transactions) {
   const monthsUiArr = Array.from(monthsSet);
   sortArrayByMonthName(monthsUiArr);
 
-  return {customersArr: customersUiArr, monthsArr: monthsUiArr};
+  return { customersArr: customersUiArr, monthsArr: monthsUiArr };
 }
 
 function calculateAmountForEachMonth(transactions, monthsSet, customerNamesMap) {
   return transactions.reduce((customersMap, item) => {
-    const {customerId, customerName, date, amount} = item;
-    //alternatively we could just split date by '-', get 2nd item and create MONTHS constant in Constants.js
-    const month = new Date(date).toLocaleString('en-US', {month: 'long'});
+    const { customerId, customerName, date, amount } = item;
+    const monthNumber = +date.split('-')[1];
+    const month = Object.keys(Months).find(key => Months[key] === monthNumber);
+
     if (!monthsSet.has(month)) {
       monthsSet.add(month);
     }
@@ -44,26 +46,24 @@ function calculateAmountForEachMonth(transactions, monthsSet, customerNamesMap) 
 }
 
 function calculatePoints(amount) {
-  let points = 0;
-
-  if (amount >= 100) {
-    points = 50 + 2 * (amount - 100);
-  } else if (amount >= 50) {
-    points = amount - 50;
+  if (amount > 100) { //100 is level where we get 2 points per 1$
+    return 50 + 2 * (amount - 100);
+  } else if (amount > 50) { //50 is level where we get 1 point per 1$
+    return amount - 50;
   }
-  return points;
+  return 0;
 }
 
 function populateCustomersUiArr(customersMap, customerNamesMap, customersUiArr) {
   customersMap.forEach((monthsMap, customerId) => {
     const customerName = customerNamesMap.get(customerId);
-    const row = {customerId, customerName};
+    const row = { customerId, customerName };
     let total = 0;
     monthsMap.forEach((points, month) => {
       row[month] = points;
       total += points;
     });
-    Object.assign(row, {total});
+    Object.assign(row, { total });
 
     customersUiArr.push(row);
   });
