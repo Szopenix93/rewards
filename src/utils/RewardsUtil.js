@@ -1,4 +1,3 @@
-import { sortArrayByMonthName } from "./Utils";
 import { Months } from "../enums/Months";
 
 export function transformTransactions(transactions) {
@@ -67,4 +66,8 @@ function populateCustomersUiArr(customersMap, customerNamesMap, customersUiArr) 
 
     customersUiArr.push(row);
   });
+}
+
+function sortArrayByMonthName(arr) {
+  arr.sort((a, b) => Months[a] - Months[b]);
 }
